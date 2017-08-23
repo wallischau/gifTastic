@@ -1,0 +1,16 @@
+#gifform {
+	margin: 10px;
+}
+
+.gif-button {
+	margin: 5px;
+}
+
+.img-block {
+	float: left;
+	margin: 10px 5px;
+}
+
+#gif-images {
+	width: 600px;
+}
