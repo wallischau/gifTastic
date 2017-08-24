@@ -1,9 +1,23 @@
+#search-label  {
+	color: darkgreen;
+}
+
+
 #gifform {
 	margin: 10px;
 }
 
 .gif-button {
-	margin: 5px;
+	margin: 5px 10px;
+	position: relative;
+	background: #c5fd7c;
+	border: 1px solid #c5fd7c;
+	box-shadow: 0 0 1px inset;
+	background-image: -webkit-linear-gradient(90deg, #54ee7c, #c5fd7c);
+	background-image: -o-linear-gradient(90deg, #54ee7c, #c5fd7c);
+	background-image: -moz-linear-gradient(90deg, #54ee7c, #c5fd7c);
+	background-image: linear-gradient(90deg, #54ee7c, #c5fd7c);
+
 }
 
 .img-block {

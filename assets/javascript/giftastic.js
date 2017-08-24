@@ -3,34 +3,75 @@
 
 var queryURL;
 var userInput;
-itemNum = 0;
-btnArray = [];
-gifSet = [];
-
+var itemNum = 0;
+var quantity = 12;
+ 
 $(document).ready(function() {
+
+function addButton(input) {
+	//create new button for each keyword
+	var newBtn = $('<button>');
+	newBtn.attr('id',`gif-${itemNum}`);
+	newBtn.css('font-size', '20px');
+	newBtn.addClass("gif-button");
+	newBtn.text(input);
+	$('#gif-list').append(newBtn);
+	//clear input text
+	$('#gif-input').val('');
+
+	//make superscript div
+	var newCloseDiv = $('<div>');
+	var style = {
+		border: '1px solid black',
+		position: 'absolute',
+		right: '-5px',
+		top: '-5px',
+		height: '10px',
+		width: '10px',
+		background: '#ff7',
+		margin: 0,
+		"font-size": '10px',
+		"border-radius": '50%'
+	};
+	newCloseDiv.attr('id',`close-div-${itemNum}`);
+	newCloseDiv.addClass("close-btn");
+	newCloseDiv.css(style);
+	newCloseDiv.text('x');
+	newBtn.append(newCloseDiv);
+
+	itemNum++;
+
+}
+
+
+addButton("snow white");
+addButton("tinker bell");
+addButton("beauty and the beast");
+addButton("lion king");
+addButton("cinderella");
+addButton("mulan");
+addButton("Avatar the last air bender");
 
 //get user input and make button
 $('#add-gif').click(function(event) {
 	event.preventDefault();
 	userInput = $('#gif-input').val().trim();
-	var newBtn = $('<button>');
-	newBtn.attr('id',`gif-${itemNum}`);
-	newBtn.addClass("gif-button");
-	newBtn.text(userInput);
-	itemNum++;
-	$('#gif-list').append(newBtn);
-	//add new gif to array
-	btnArray.push(newBtn);
-	console.log(btnArray);
-	//clear input text
-	$('#gif-input').val('');
+	//add new button
+	addButton(userInput);
+
 });
 
 //click on new button
 $('#gif-list').on('click', '.gif-button', function() {
 	console.log($(this));	
+	console.log($(this).text());
+
+	//format keyword string
+	var str = $(this)[0].textContent.slice(0, $(this)[0].textContent.length - 1);
+	str =str.replace(/ /g, '+');
+	console.log(str);
 	//setup url
-	queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this)[0].textContent + "&api_key=98b0dc0aad1b49e5b25b2c7baf1c4ea5&limit=10";
+	queryURL = "https://api.giphy.com/v1/gifs/search?q=" + str + "&api_key=98b0dc0aad1b49e5b25b2c7baf1c4ea5&limit=" + quantity;
 	console.log(queryURL);
 	$.ajax( {url: queryURL,
 			method: 'GET'
@@ -79,11 +120,16 @@ $('#gif-images').on('click', '.img-item', function() {
 	}
 });
 
+//on click close button
+$('#gif-list').on('click', '.close-btn', function(event) {
+	//prevent lower layer onclick event fired
+	event.stopPropagation();
+	console.log($(this));
+	var parentDiv = $(this).parent();
+	console.log(parentDiv);
+	parentDiv.remove();
 
-
-
-
-
+});
 
 
 });//ready
