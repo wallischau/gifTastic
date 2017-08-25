@@ -59,7 +59,7 @@ addButton("minion");
 addButton("lion king");
 addButton("cinderella");
 addButton("mulan");
-addButton("Avatar the last air bender");
+addButton("last airbender");
 
 
 //get user input and make button
