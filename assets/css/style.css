@@ -1,7 +1,19 @@
-#search-label  {
-	color: darkgreen;
+/*GifTastic                                */
+/*Author: Wallis Chau                      */
+/*Description: Lists gif and animate gif   */
+/*from giphy.com on user input             */
+/*Date: 8/22/17                            */
+
+body {
+	background-image: url('../images/green_flare.jpeg');
+}
+#search-label, #add-gif, #more-label  {
+	color: #421;
+	font-size: 18px;
 }
 
+#add-gif {
+}
 
 #gifform {
 	margin: 10px;
@@ -28,3 +40,9 @@
 #gif-images {
 	width: 600px;
 }
+
+@media screen and (max-width: 640px) {
+	#gif-images {
+		width: 100%;
+	}
+} 

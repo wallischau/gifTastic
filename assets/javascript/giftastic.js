@@ -1,5 +1,8 @@
-
-
+/*GifTastic                                */
+/*Author: Wallis Chau                      */
+/*Description: Lists gif and animate gif   */
+/*from giphy.com on user input             */
+/*Date: 8/22/17                            */
 
 var queryURL;
 var userInput;
@@ -7,7 +10,10 @@ var itemNum = 0;
 var quantity = 12;
  
 $(document).ready(function() {
-
+     
+/* addButton                                 */
+/* description: add a img button to the DOM  */
+/* parameter:  input - text on the button    */
 function addButton(input) {
 	//create new button for each keyword
 	var newBtn = $('<button>');
@@ -33,14 +39,14 @@ function addButton(input) {
 		"font-size": '10px',
 		"border-radius": '50%'
 	};
+	//make this superscript a close button X
 	newCloseDiv.attr('id',`close-div-${itemNum}`);
 	newCloseDiv.addClass("close-btn");
 	newCloseDiv.css(style);
 	newCloseDiv.text('x');
 	newBtn.append(newCloseDiv);
-
+	//tracker
 	itemNum++;
-
 }
 
 
@@ -61,27 +67,26 @@ $('#add-gif').click(function(event) {
 
 });
 
-//click on new button
+//click event on new button
 $('#gif-list').on('click', '.gif-button', function() {
 	console.log($(this));	
-	console.log($(this).text());
 
 	//format keyword string
 	var str = $(this)[0].textContent.slice(0, $(this)[0].textContent.length - 1);
 	str =str.replace(/ /g, '+');
-	console.log(str);
 	//setup url
 	queryURL = "https://api.giphy.com/v1/gifs/search?q=" + str + "&api_key=98b0dc0aad1b49e5b25b2c7baf1c4ea5&limit=" + quantity;
 	console.log(queryURL);
 	$.ajax( {url: queryURL,
 			method: 'GET'
 		}).done(function(response) {
-			//display rating
+			//display rating and images
 			showGifInfo(response);
 		});
 })
 
-
+/* showGifInfo                                        */
+/* description: show all gifs from giphy.com response */
 function showGifInfo(respn) {
 	console.log(respn);
 	$('#gif-images').empty();
@@ -92,7 +97,7 @@ function showGifInfo(respn) {
 		imgBlock.attr('id', `img-block-${i}`);
 		//display rating inside img block
 		var ratingDiv = $('<div>');
-		ratingDiv.text(respn.data[i].rating);
+		ratingDiv.text('rating: ' + respn.data[i].rating);
 		imgBlock.append(ratingDiv);
 		//display image inside img block
 		var image = $('<img>');
@@ -109,7 +114,8 @@ function showGifInfo(respn) {
 
 //onclick each image
 $('#gif-images').on('click', '.img-item', function() {
-	console.log($(this));
+	//console.log($(this));
+	//toggle still and animate version
 	if ($(this).attr('data-state') === 'still') {
 		$(this).attr('data-state','animate');
 		$(this).attr('src', $(this).attr('data-animate'));
