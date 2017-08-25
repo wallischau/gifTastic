@@ -7,13 +7,11 @@
 body {
 	background-image: url('../images/green_flare.jpeg');
 }
-#search-label, #add-gif, #more-label  {
+#search-label, #add-gif, #more-btn  {
 	color: #421;
 	font-size: 18px;
 }
 
-#add-gif {
-}
 
 #gifform {
 	margin: 10px;
@@ -31,6 +29,7 @@ body {
 	background-image: linear-gradient(90deg, #54ee7c, #c5fd7c);
 
 }
+
 
 .img-block {
 	float: left;

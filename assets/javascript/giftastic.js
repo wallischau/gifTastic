@@ -8,6 +8,8 @@ var queryURL;
 var userInput;
 var itemNum = 0;
 var quantity = 12;
+var offset = 0;
+var str = null;
  
 $(document).ready(function() {
      
@@ -53,10 +55,12 @@ function addButton(input) {
 addButton("snow white");
 addButton("tinker bell");
 addButton("beauty and the beast");
+addButton("minion");
 addButton("lion king");
 addButton("cinderella");
 addButton("mulan");
 addButton("Avatar the last air bender");
+
 
 //get user input and make button
 $('#add-gif').click(function(event) {
@@ -67,15 +71,13 @@ $('#add-gif').click(function(event) {
 
 });
 
-//click event on new button
-$('#gif-list').on('click', '.gif-button', function() {
-	console.log($(this));	
-
-	//format keyword string
-	var str = $(this)[0].textContent.slice(0, $(this)[0].textContent.length - 1);
-	str =str.replace(/ /g, '+');
+/* retrive                                          */
+/* description: run ajax on queryurl                */
+/* parameter:   offset - starting position on query */
+function retrieve(offset) {
+	if (str != null) {
 	//setup url
-	queryURL = "https://api.giphy.com/v1/gifs/search?q=" + str + "&api_key=98b0dc0aad1b49e5b25b2c7baf1c4ea5&limit=" + quantity;
+	queryURL = "https://api.giphy.com/v1/gifs/search?q=" + str + "&api_key=98b0dc0aad1b49e5b25b2c7baf1c4ea5&limit=" + quantity + "&offset=" + offset;
 	console.log(queryURL);
 	$.ajax( {url: queryURL,
 			method: 'GET'
@@ -83,7 +85,27 @@ $('#gif-list').on('click', '.gif-button', function() {
 			//display rating and images
 			showGifInfo(response);
 		});
-})
+
+	}
+}
+
+//click event on new button
+$('#gif-list').on('click', '.gif-button', function() {
+	console.log($(this));	
+
+	//format keyword string
+	str = $(this)[0].textContent.slice(0, $(this)[0].textContent.length - 1);
+	str =str.replace(/ /g, '+');
+	//set offset
+	offset = 0;
+	retrieve(offset);
+});
+
+//click event on Show more
+$('#more-btn').on('click', function() {
+	offset += 12;
+	retrieve(offset);
+});
 
 /* showGifInfo                                        */
 /* description: show all gifs from giphy.com response */
