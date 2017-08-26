@@ -10,6 +10,7 @@ var itemNum = 0;
 var quantity = 12;
 var offset = 0;
 var str = null;
+var gifInitList = ['snow white', 'tinker bell', 'minion', 'mulan', 'last airbender', 'cinderella', 'lion king'];
  
 $(document).ready(function() {
      
@@ -52,14 +53,17 @@ function addButton(input) {
 }
 
 
-addButton("snow white");
-addButton("tinker bell");
-addButton("beauty and the beast");
-addButton("minion");
-addButton("lion king");
-addButton("cinderella");
-addButton("mulan");
-addButton("last airbender");
+for (var i=0; i < gifInitList.length; i++) {
+	addButton(gifInitList[i]);	
+}
+//addButton("snow white");
+//addButton("tinker bell");
+//addButton("beauty and the beast");
+//addButton("minion");
+//addButton("lion king");
+//addButton("cinderella");
+//addButton("mulan");
+//addButton("last airbender");
 
 
 //get user input and make button
