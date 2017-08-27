@@ -52,19 +52,10 @@ function addButton(input) {
 	itemNum++;
 }
 
-
+//pre-load gif buttons
 for (var i=0; i < gifInitList.length; i++) {
 	addButton(gifInitList[i]);	
 }
-//addButton("snow white");
-//addButton("tinker bell");
-//addButton("beauty and the beast");
-//addButton("minion");
-//addButton("lion king");
-//addButton("cinderella");
-//addButton("mulan");
-//addButton("last airbender");
-
 
 //get user input and make button
 $('#add-gif').click(function(event) {

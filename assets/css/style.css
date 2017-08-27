@@ -7,6 +7,15 @@
 body {
 	background-image: url('../images/green_flare.jpeg');
 }
+
+#heading {
+	text-align: center;
+	font-size: 24px;
+	margin: 10px 5px 5px 5px;
+	color: #421;
+	text-shadow: 2px 2px 5px yellow;
+
+}
 #search-label, #add-gif, #more-btn  {
 	color: #421;
 	font-size: 18px;
