@@ -17,8 +17,8 @@ body {
 
 }
 
+/*show more button*/
 #more-btn {
-	margin-left: 100px;
 	margin-top: 10px;
 }
 
@@ -27,17 +27,19 @@ body {
 	font-size: 18px;
 }
 
-
+/*form input entry*/
 #gifform {
 	margin: 10px;
 	float: left;
-	width: 500px;
+	width: 450px;
 }
 
+/*list of gifs*/
 #gif-list {
 	clear: both;
 }
 
+/*each gif button with shadow*/
 .gif-button {
 	margin: 5px 10px;
 	position: relative;
@@ -51,20 +53,18 @@ body {
 
 }
 
-
+/*each gif block*/
 .img-block {
 	float: left;
 	margin: 10px 5px;
 }
 
+/*area of gifs*/
 #gif-images {
 	width: 500px;
 	float: left;
 }
 
-#right-panel {
-	/*float: right;*/
-}
 
 @media screen and (max-width: 640px) {
 	#gif-images {
