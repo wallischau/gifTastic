@@ -16,6 +16,12 @@ body {
 	text-shadow: 2px 2px 5px yellow;
 
 }
+
+#more-btn {
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
 #search-label, #add-gif, #more-btn  {
 	color: #421;
 	font-size: 18px;
@@ -24,6 +30,12 @@ body {
 
 #gifform {
 	margin: 10px;
+	float: left;
+	width: 500px;
+}
+
+#gif-list {
+	clear: both;
 }
 
 .gif-button {
@@ -46,7 +58,12 @@ body {
 }
 
 #gif-images {
-	width: 600px;
+	width: 500px;
+	float: left;
+}
+
+#right-panel {
+	/*float: right;*/
 }
 
 @media screen and (max-width: 640px) {

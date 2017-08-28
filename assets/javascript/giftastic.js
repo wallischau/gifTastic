@@ -111,7 +111,6 @@ function showGifInfo(respn) {
 		//create image block
 		var imgBlock = $('<div>');	
 		imgBlock.addClass('img-block');
-		imgBlock.attr('id', `img-block-${i}`);
 		//display rating inside img block
 		var ratingDiv = $('<div>');
 		ratingDiv.text('rating: ' + respn.data[i].rating);
@@ -119,8 +118,11 @@ function showGifInfo(respn) {
 		//display image inside img block
 		var image = $('<img>');
 		image.addClass('img-item');
+		image.attr('id', `img-item-${i}`);
 		image.attr('data-still', respn.data[i].images.fixed_height_small_still.url);
 		image.attr('data-animate', respn.data[i].images.fixed_height_small.url);
+		image.attr('data-still-large', respn.data[i].images.fixed_height_still.url);
+		image.attr('data-animate-large', respn.data[i].images.fixed_height.url);
 		image.attr('data-state', 'still');
 		image.attr('src', image.attr('data-still'));
 
@@ -129,6 +131,8 @@ function showGifInfo(respn) {
 	}
 }
 
+var rightImg;
+var tempImgId;
 //onclick each image
 $('#gif-images').on('click', '.img-item', function() {
 	//console.log($(this));
@@ -136,10 +140,25 @@ $('#gif-images').on('click', '.img-item', function() {
 	if ($(this).attr('data-state') === 'still') {
 		$(this).attr('data-state','animate');
 		$(this).attr('src', $(this).attr('data-animate'));
+		rightImg = $('<img>');
+		rightImg.attr('id', 'large-img');
+		console.log($(this));
+		console.log($(this).attr('data-animate-large'));
+		rightImg.attr('src', $(this).data('animate-large'));
+		tempImgId = $(this);
+		console.log(tempImgId);
+		$('#right-panel').append(rightImg);
+		//onclick in large gif to close it and set small one still
+		$('#large-img').click(function() {
+			tempImgId.attr('data-state','still');
+			tempImgId.attr('src', tempImgId.attr('data-still'));
+			$('#right-panel').empty();
+ 		});
 	}
 	else {
 		$(this).attr('data-state','still');
 		$(this).attr('src', $(this).attr('data-still'));
+		$('#right-panel').empty();
 	}
 });
 
