@@ -145,9 +145,10 @@ $('#gif-images').on('click', '.img-item', function() {
 		console.log($(this));
 		console.log($(this).attr('data-animate-large'));
 		rightImg.attr('src', $(this).data('animate-large'));
+		//display larger image on the right panel
 		tempImgId = $(this);
 		console.log(tempImgId);
-		$('#right-panel').append(rightImg);
+		$('#right-panel').html(rightImg);
 		//onclick in large gif to close it and set small one still
 		$('#large-img').click(function() {
 			tempImgId.attr('data-state','still');
