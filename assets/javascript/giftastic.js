@@ -107,6 +107,7 @@ $('#more-btn').on('click', function() {
 function showGifInfo(respn) {
 	console.log(respn);
 	$('#gif-images').empty();
+	$('#right-panel').empty();
 	for (var i=0; i<respn.data.length; i++) {
 		//create image block
 		var imgBlock = $('<div>');	
